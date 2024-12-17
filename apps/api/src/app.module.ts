@@ -3,7 +3,8 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { join } from 'path'
 import { ConfigModule } from '@nestjs/config'
-import { ProjectsModule } from './projects/projects.module'
+import { ProjectsModule } from './models/projects/projects.module'
+import { PrismaModule } from './prisma/prisma.module'
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ProjectsModule } from './projects/projects.module'
       buildSchemaOptions: { numberScalarMode: 'integer' },
     }),
     ProjectsModule,
+    PrismaModule,
   ],
 })
 export class AppModule {}

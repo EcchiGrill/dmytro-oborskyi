@@ -13,28 +13,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  uid      String @id @default(uuid())
-  username String
-  email    String
-  password String
-  admin    Admin?
-}
-
-model Admin {
-  uid  String @id
-  user User   @relation(fields: [uid], references: [uid], onDelete: Cascade)
-}
-
 model Project {
-  uid      String            @id @default(uuid())
+  uid      String           @id @default(uuid())
   name     String
   preview  String
+  preview_mobile  String?
   link     String
   featured FeaturedProject?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model FeaturedProject {
-  uid     String   @id
+  uid     String  @id
   project Project @relation(fields: [uid], references: [uid], onDelete: Cascade)
 }
