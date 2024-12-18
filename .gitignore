@@ -3,3 +3,6 @@ build
 dist 
 .next 
 .env
+.husky/
+.nx/cache
+.nx/workspace-data

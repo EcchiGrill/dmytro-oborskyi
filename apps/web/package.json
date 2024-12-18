@@ -10,7 +10,7 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@dmytro-oborskyi/sample-lib": "link:..\\..\\libs\\sample-lib",
+    "@dmytro-oborskyi/sample-lib": "*",
     "next": "15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

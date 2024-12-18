@@ -19,10 +19,13 @@ scalar DateTime
 
 type Query {
   projects: [Project!]!
+  featuredProjects: [Project!]!
   getProject(uid: String!): Project!
 }
 
 type Mutation {
+  addFeaturedProject(uid: String!): Project!
+  removeFeaturedProject(uid: String!): Project!
   createProject(createProjectInput: CreateProjectInput!): Project!
   updateProject(updateProjectInput: UpdateProjectInput!): Project!
   removeProject(uid: String!): Project!

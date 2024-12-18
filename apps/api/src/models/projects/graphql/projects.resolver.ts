@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { Project } from './entities/project.entity'
-import { Body, UsePipes, ValidationPipe } from '@nestjs/common'
+import { UsePipes, ValidationPipe } from '@nestjs/common'
 import { RemoveProjectArgs } from './dtos/remove-project.args'
 import { UpdateProjectInput } from './dtos/update-project.input'
 import { CreateProjectInput } from './dtos/create-project.input'
@@ -15,6 +15,21 @@ export class ProjectsResolver {
     return this.projectsService.getProjects()
   }
 
+  @Query(() => [Project], { name: 'featuredProjects' })
+  getFeaturedProjects() {
+    return this.projectsService.getFeaturedProjects()
+  }
+
+  @Mutation(() => Project)
+  addFeaturedProject(@Args('uid') uid: string) {
+    return this.projectsService.addFeaturedProject(uid)
+  }
+
+  @Mutation(() => Project)
+  removeFeaturedProject(@Args('uid') uid: string) {
+    return this.projectsService.removeFeaturedProject(uid)
+  }
+
   @Query(() => Project)
   getProject(@Args('uid') uid: string) {
     return this.projectsService.getProject(uid)
@@ -22,7 +37,7 @@ export class ProjectsResolver {
 
   @Mutation(() => Project)
   @UsePipes(new ValidationPipe())
-  createProject(@Body() @Args('createProjectInput') args: CreateProjectInput) {
+  createProject(@Args('createProjectInput') args: CreateProjectInput) {
     return this.projectsService.createProject(args)
   }
 

@@ -32,6 +32,34 @@ export class ProjectsController {
   }
 
   @ApiOkResponse({
+    description: 'Get featured projects.',
+    type: [Project],
+  })
+  @Get('featured')
+  getFeaturedProjects() {
+    return this.projectsService.getFeaturedProjects()
+  }
+
+  @ApiCreatedResponse({
+    description:
+      'The project has been successfully added to featured collection.',
+    type: Project,
+  })
+  @Post('featured/:uid')
+  async addFeaturedProject(@Param('uid', ParseUUIDPipe) uid: string) {
+    return this.projectsService.addFeaturedProject(uid)
+  }
+
+  @ApiCreatedResponse({
+    description:
+      'The project has been succesfully removed from featured collection.',
+  })
+  @Delete('featured/:uid')
+  removeFeaturedProject(@Param('uid', ParseUUIDPipe) uid: string) {
+    return this.projectsService.removeFeaturedProject(uid)
+  }
+
+  @ApiOkResponse({
     description: 'Get project by uid.',
     type: Project,
   })
