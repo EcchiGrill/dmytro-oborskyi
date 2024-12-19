@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Alata } from 'next/font/google'
 import './globals.css'
-
-const alata = Alata({
-  weight: '400',
-  subsets: ['latin'],
-})
+import { primaryFont } from '@/assets/fonts'
 
 export const metadata: Metadata = {
-  title: 'Frontend',
+  title: 'Dmytro Oborskyi',
+  description: 'Dmytro Oborskyi portfolio website',
+  creator: 'Dmytro Oborskyi',
+  category: 'Portfolio',
+  keywords: ['portfolio', 'cv', 'resume', 'fullstack', 'fullstack developer'],
+  robots: { index: true, follow: true, nocache: true },
 }
 
 export default function RootLayout({
@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${alata.className} ${alata.className} antialiased`}>
+      <body
+        className={`${primaryFont.className} ${primaryFont.className} antialiased`}
+      >
         {children}
       </body>
     </html>

@@ -1,9 +1,9 @@
-import { sum } from '@dmytro-oborskyi/sample-lib'
+import Home from '@/components/home'
 
-export default function Home() {
+export default function App() {
   return (
-    <main className="h-screen place-items-center place-content-center flex text-2xl">
-      Frontik: {sum(13, 321312)}
-    </main>
+    <>
+      <Home />
+    </>
   )
 }
