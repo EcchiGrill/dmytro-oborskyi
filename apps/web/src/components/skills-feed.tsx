@@ -1,11 +1,4 @@
-'use client'
-
-import { useState, useRef, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useSwipeable } from 'react-swipeable'
-import { useHarmonicIntervalFn } from 'react-use'
-import { SKILLS_INTERVAL } from '@/lib/constants'
+import { useEffect, useRef, useState } from 'react'
 import Javascript from '@/assets/icons/javascript.svg'
 import Typescript from '@/assets/icons/typescript.svg'
 import React from '@/assets/icons/react.svg'
@@ -14,7 +7,10 @@ import Vue from '@/assets/icons/vue.svg'
 import NestJS from '@/assets/icons/nestjs.svg'
 import GraphQL from '@/assets/icons/graphql.svg'
 import Prisma from '@/assets/icons/prisma.svg'
+import Docker from '@/assets/icons/docker.svg'
 import { motion } from 'motion/react'
+import { useInterval } from 'react-use'
+import { SKILLS_INTERVAL } from '@/lib/constants'
 
 const skills = [
   { name: 'Javascript', icon: Javascript },
@@ -25,97 +21,81 @@ const skills = [
   { name: 'NestJS', icon: NestJS },
   { name: 'GraphQL', icon: GraphQL },
   { name: 'Prisma', icon: Prisma },
+  { name: 'Docker', icon: Docker },
 ]
 
-function SkillsFeed() {
-  const [scrollPosition, setScrollPosition] = useState(0)
+export function SkillsFeed({
+  order = 'default',
+  direction = 'vertical',
+}: {
+  order?: 'default' | 'reverse'
+  direction?: 'vertical' | 'horizontal'
+}) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [containerWidth, setContainerWidth] = useState(0)
-  const [totalWidth, setTotalWidth] = useState(0)
+  const [itemSize, setItemSize] = useState(0)
+  const extendedSkills =
+    order === 'default'
+      ? [...skills, ...skills]
+      : [...skills, ...skills].reverse()
+
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
-    const updateWidths = () => {
-      if (containerRef.current) {
-        setContainerWidth(containerRef.current.clientWidth)
-        setTotalWidth(containerRef.current.scrollWidth)
-      }
+    if (containerRef.current) {
+      const firstItem = containerRef.current.children[0] as HTMLElement
+      setItemSize(
+        direction === 'vertical'
+          ? firstItem.offsetHeight
+          : firstItem.offsetWidth,
+      )
     }
+  }, [direction])
 
-    updateWidths()
-    window.addEventListener('resize', updateWidths)
-    return () => window.removeEventListener('resize', updateWidths)
-  }, [])
-
-  const scroll = (direction: 'left' | 'right') => {
-    const container = containerRef.current
-    if (container) {
-      const scrollAmount = direction === 'left' ? -200 : 200
-      let newScrollPosition = scrollPosition + scrollAmount
-
-      if (newScrollPosition < 0) {
-        newScrollPosition = totalWidth - containerWidth
-      } else if (newScrollPosition > totalWidth - containerWidth) {
-        newScrollPosition = 0
-      }
-
-      container.scrollTo({ left: newScrollPosition, behavior: 'smooth' })
-      setScrollPosition(newScrollPosition)
+  useEffect(() => {
+    if (containerRef.current && itemSize > 0) {
+      const transform =
+        direction === 'vertical'
+          ? `translateY(-${currentIndex * itemSize}px)`
+          : `translateX(-${currentIndex * itemSize}px)`
+      containerRef.current.style.transform = transform
     }
-  }
+  }, [currentIndex, itemSize, direction])
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => scroll('right'),
-    onSwipedRight: () => scroll('left'),
-    preventScrollOnSwipe: true,
-    trackMouse: true,
-  })
+  const nextItem = () =>
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % skills.length)
 
-  useHarmonicIntervalFn(() => scroll('right'), SKILLS_INTERVAL)
+  useInterval(nextItem, SKILLS_INTERVAL)
+
+  const containerClass =
+    direction === 'vertical'
+      ? 'flex flex-col space-y-16'
+      : 'flex flex-row space-x-16'
+
+  const itemClass = direction === 'vertical' ? 'h-[20vh] w-full' : 'w-[20vw]'
 
   return (
-    <div className="relative p-4 bg-[#8e8e90]">
-      <div className="flex items-center max-w-7xl mx-auto">
-        <Button
-          variant="outline"
-          size="icon"
-          className="mr-4 z-10"
-          onClick={() => scroll('left')}
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="min-h-5 min-w-10" />
-        </Button>
-        <div
-          {...handlers}
-          ref={containerRef}
-          className="flex overflow-x-hidden space-x-4 p-4 touch-pan-x"
-          style={{ WebkitOverflowScrolling: 'touch' }}
-        >
-          {[...skills, ...skills].map((skill, index) => (
+    <div className="relative w-full sm:h-home overflow-hidden">
+      <div
+        ref={containerRef}
+        className={`absolute inset-0 transition-transform duration-1000 ease-in-out  ${containerClass}`}
+        style={{ willChange: 'transform' }}
+      >
+        {extendedSkills.map((skill, index) => (
+          <div
+            key={`${skill.name}-${index}`}
+            className={`flex items-center justify-center ${itemClass}`}
+          >
             <motion.div
+              className="flex flex-col items-center space-y-4"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              key={index}
-              className="flex flex-col items-center justify-center bg-white rounded-lg shadow-md p-4 w-40 h-40 flex-shrink-0"
             >
-              <skill.icon className="mb-2 opacity-70" aria-hidden="true" />
-              <span className="text-center font-medium text-base">
-                {skill.name}
-              </span>
+              <skill.icon />
+              <h3 className="text-2xl font-semibold">{skill.name}</h3>
             </motion.div>
-          ))}
-        </div>
-        <Button
-          variant="outline"
-          size="icon"
-          className="ml-4 z-10"
-          onClick={() => scroll('right')}
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="min-h-5 min-w-10" />
-        </Button>
+          </div>
+        ))}
       </div>
     </div>
   )
 }
-
-export default SkillsFeed

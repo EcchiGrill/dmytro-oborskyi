@@ -29,7 +29,7 @@
   "devDependencies": {
     "typescript": "^5.7.2",
     "husky": "^8.0.0",
-    "nx": "20.2.2"
+    "nx": "20.3.0"
   },
   "dependencies": {
     "prettier": "^3.4.2"

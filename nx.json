@@ -1,13 +1,12 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "defaultBase": "main",
   "targetDefaults": {
     "build": {
       "dependsOn": [
         "^build"
       ],
       "outputs": [
-        "{projectRoot}/.next, build, dist"
+        "{projectRoot}/.next, dist, build"
       ],
       "cache": true
     },
@@ -29,5 +28,6 @@
       "cache": true
     }
   },
-  "nxCloudId": "6762ac82b2448e57d4b976d4"
+  "defaultBase": "main",
+  "nxCloudId": "676bd0ef5f5bc034e8f540c1"
 }

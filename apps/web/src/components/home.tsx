@@ -7,7 +7,8 @@ import Email from '@/assets/icons/email.svg'
 import Upwork from '@/assets/icons/upwork.svg'
 import { motion } from 'motion/react'
 import Link from 'next/link'
-import SkillsFeed from './skills-feed'
+import { SkillsFeed } from './skills-feed'
+import { useEffect, useState } from 'react'
 
 const socialItems = [
   { icon: Github, href: '#github' },
@@ -17,44 +18,90 @@ const socialItems = [
 ]
 
 function Home() {
+  const [screenWidth, setScreenWidth] = useState<number>(0)
+
+  useEffect(() => {
+    setScreenWidth(window.innerWidth)
+  }, [])
+
   return (
     <>
       <Header />
-      <main className="grid grid-cols-2 place-items-center pl-8 pr-1 gap-4 h-[calc(100vh-6rem)] relative">
-        <div className="text-3xl md:text-7xl lg:text-8xl">
-          <motion.div initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }}>
+      <main className="grid grid-cols-1 max-sm:grid-rows-home sm:grid-cols-home place-content-center gap-5 md:gap-14 h-home relative">
+        <SkillsFeed direction={screenWidth < 640 ? 'horizontal' : 'vertical'} />
+        <div className="max-md:px-10 grid grid-cols-1 2xl:grid-cols-3 my-auto text-7xl 3xl:text-8xl gap-y-4 lg:gap-y-10">
+          <motion.div
+            initial={{ scaleY: 0, x: 100 }}
+            whileInView={{ scaleY: 1, x: 0 }}
+            className="max-2xl:hidden justify-self-end"
+          >
             Hello,
           </motion.div>
+
+          <Image
+            src="/portrait.png"
+            alt="Portrait"
+            width="500"
+            height="500"
+            priority={true}
+            className="justify-self-center min-h-64 min-w-64 max-md:w-52"
+          />
+
+          <div className="text-3xl md:text-6xl flex gap-3 justify-center 2xl:hidden">
+            <motion.div
+              initial={{ scaleY: 0, x: -100 }}
+              whileInView={{ scaleY: 1, x: 0 }}
+            >
+              Hello,
+            </motion.div>
+
+            <motion.div
+              initial={{ scaleY: 0, x: 100 }}
+              whileInView={{ scaleY: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className="whitespace-pre"
+            >
+              {"I'm Dmytro!"}
+            </motion.div>
+          </div>
+
           <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
+            initial={{ scaleY: 0, x: -100 }}
+            whileInView={{ scaleY: 1, x: 0 }}
             transition={{ delay: 0.5 }}
+            className="max-2xl:hidden self-end whitespace-pre"
           >
             {"I'm Dmytro!"}
           </motion.div>
-          <div className="text-lg md:text-3xl whitespace-nowrap mt-3 opacity-60">
-            {'// Full-stack Developer //'}
-          </div>
-          <ul className="flex gap-2 mt-4 opacity-80 ">
-            {socialItems.map((item) => (
-              <Link key={item.href} href={item.href} target="_blank">
-                <item.icon />
-              </Link>
-            ))}
-          </ul>
+
+          <motion.div
+            className="flex flex-col place-items-center"
+            initial={{ scaleX: 0, y: 100 }}
+            whileInView={{ scaleX: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            style={{ gridColumn: screenWidth > 1536 ? '2' : '' }}
+          >
+            <div className="text-2xl md:text-4xl lg:text-5xl whitespace-pre opacity-60">
+              {'// Full-stack Developer //'}
+            </div>
+            <ul className="flex gap-2 mt-5 opacity-80 ">
+              {socialItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  className="hover:opacity-85 duration-200 transition"
+                >
+                  <item.icon />
+                </Link>
+              ))}
+            </ul>
+          </motion.div>
         </div>
-        <Image
-          src="/portrait.png"
-          alt="Portrait"
-          width="0"
-          height="0"
-          priority={true}
-          sizes="100vw"
-          className="w-auto h-auto"
+        <SkillsFeed
+          order="reverse"
+          direction={screenWidth < 640 ? 'horizontal' : 'vertical'}
         />
-        <div className="absolute w-full bottom-0">
-          <SkillsFeed />
-        </div>
       </main>
     </>
   )
