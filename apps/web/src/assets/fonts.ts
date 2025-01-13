@@ -1,11 +1,21 @@
-import { Alata, Fira_Code, Roboto } from 'next/font/google'
+import { Alata, Fira_Code, Roboto, Akshar, Rokkitt } from 'next/font/google'
 
 export const primaryFont = Alata({
   weight: '400',
   subsets: ['latin'],
 })
 
-export const navFont = Roboto({
+export const roboto = Roboto({
+  weight: '300',
+  subsets: ['latin'],
+})
+
+export const rokkit = Rokkitt({
+  weight: '300',
+  subsets: ['latin'],
+})
+
+export const akshar = Akshar({
   weight: '300',
   subsets: ['latin'],
 })

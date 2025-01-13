@@ -11,7 +11,7 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@dmytro-oborskyi/sample-lib": "*",
+    "@dmytro-oborskyi/network": "*",
     "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-slot": "^1.1.1",
     "@svgr/webpack": "^8.1.0",

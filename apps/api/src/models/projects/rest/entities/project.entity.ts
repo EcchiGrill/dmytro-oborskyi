@@ -16,22 +16,57 @@ export class Project implements ProjectType {
   name: string
 
   @ApiProperty({
-    example: 'https://i.imgur.com/djaSRcV.png',
-    description: 'Mobile Preview Image(optional)',
+    example: 'Your Destination for Exquisite Scents',
+    description: 'Short description (for featured)',
+    required: false,
+    nullable: true,
+  })
+  @IsString()
+  @IsOptional()
+  description: string
+
+  @ApiProperty({
+    example: 'https://i.imgur.com/fTWBurX.png',
+    description: 'Mobile Preview Image(for featured)',
     format: 'link',
     required: false,
     nullable: true,
   })
+  @IsUrl()
   @IsOptional()
-  preview_mobile: string
+  img_mobile: string
 
   @ApiProperty({
-    example: 'https://i.imgur.com/PdNzBow_d.webp?maxwidth=760&fidelity=grand',
-    description: 'Desktop Preview Image',
+    example: 'https://i.imgur.com/zJFEJAP.png',
+    description: 'Desktop Preview Image(for featured)',
     format: 'link',
+    required: false,
+    nullable: true,
   })
   @IsUrl()
-  preview: string
+  @IsOptional()
+  img_desktop: string
+
+  @ApiProperty({
+    example: 'https://i.imgur.com/DIsc7q1.png',
+    description: 'Laptop Preview Image(for featured)',
+    format: 'link',
+    required: false,
+    nullable: true,
+  })
+  @IsUrl()
+  @IsOptional()
+  img_laptop: string
+
+  @ApiProperty({
+    example: 'https://github.com/EcchiGrill/Perfumest',
+    description: 'Github link',
+    required: false,
+    nullable: true,
+  })
+  @IsUrl()
+  @IsOptional()
+  git_link: string
 
   @ApiProperty({
     example: 'https://www.perfumest.one/',

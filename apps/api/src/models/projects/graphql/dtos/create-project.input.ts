@@ -4,6 +4,14 @@ import { Project } from '../entities/project.entity'
 @InputType()
 export class CreateProjectInput extends PickType(
   Project,
-  ['name', 'preview', 'preview_mobile', 'link'],
+  [
+    'name',
+    'link',
+    'img_mobile',
+    'img_desktop',
+    'img_laptop',
+    'git_link',
+    'description',
+  ],
   InputType,
 ) {}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import Javascript from '@/assets/icons/javascript.svg'
 import Typescript from '@/assets/icons/typescript.svg'
 import React from '@/assets/icons/react.svg'
@@ -11,6 +11,8 @@ import Docker from '@/assets/icons/docker.svg'
 import { motion } from 'motion/react'
 import { useInterval } from 'react-use'
 import { SKILLS_INTERVAL } from '@/lib/constants'
+import { cn } from '@/lib/utils'
+import { ISkillsFeedProps } from '@/types'
 
 const skills = [
   { name: 'Javascript', icon: Javascript },
@@ -24,13 +26,12 @@ const skills = [
   { name: 'Docker', icon: Docker },
 ]
 
-export function SkillsFeed({
+export const SkillsFeed: FC<ISkillsFeedProps> = ({
   order = 'default',
   direction = 'vertical',
-}: {
-  order?: 'default' | 'reverse'
-  direction?: 'vertical' | 'horizontal'
-}) {
+  className,
+  ...props
+}) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [itemSize, setItemSize] = useState(0)
   const extendedSkills =
@@ -74,7 +75,10 @@ export function SkillsFeed({
   const itemClass = direction === 'vertical' ? 'h-[20vh] w-full' : 'w-[20vw]'
 
   return (
-    <div className="relative w-full sm:h-home overflow-hidden">
+    <div
+      className={cn(className, 'relative w-full sm:h-screen overflow-hidden')}
+      {...props}
+    >
       <div
         ref={containerRef}
         className={`absolute inset-0 transition-transform duration-1000 ease-in-out  ${containerClass}`}

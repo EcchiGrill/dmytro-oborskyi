@@ -1,0 +1,37 @@
+query Projects {
+  projects {
+    uid
+    name
+    link
+    git_link
+    img_laptop
+    img_desktop
+    img_mobile
+    description
+  }
+}
+
+query FeaturedProjects {
+  featuredProjects {
+    uid
+    name
+    link
+    git_link
+    img_laptop
+    img_desktop
+    img_mobile
+    description
+  }
+}
+
+mutation CreateProject($createProjectInput: CreateProjectInput!) {
+  createProject(createProjectInput: $createProjectInput) {
+    name
+    link
+    description
+    img_mobile
+    img_desktop
+    img_laptop
+    git_link
+  }
+}

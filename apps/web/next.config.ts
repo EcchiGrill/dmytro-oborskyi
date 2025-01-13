@@ -1,6 +1,17 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+      },
+      { protocol: 'https', hostname: 'gcdnb.pbrd.co' },
+      { protocol: 'https', hostname: 'pasteboard.co' },
+    ],
+  },
+
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     //@ts-expect-error rule

@@ -28,7 +28,7 @@ My [Website](https://dmytro-oborskyi.com/) portfolio Projects/FeaturedProjects A
 $ yarn dev
 
 # Prisma startup. localhost:5555 - by default
-$ yarn prisma studio
+$ npx prisma studio
 ```
 
 Don't forget to configure Docker or any other Postgres DB!

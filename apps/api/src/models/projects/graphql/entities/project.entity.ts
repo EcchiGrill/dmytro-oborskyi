@@ -11,10 +11,19 @@ export class Project implements ProjectType {
   name: string
 
   @Field({ nullable: true })
-  preview_mobile: string
+  description: string
 
-  @IsUrl()
-  preview: string
+  @Field({ nullable: true })
+  img_mobile: string
+
+  @Field({ nullable: true })
+  img_desktop: string
+
+  @Field({ nullable: true })
+  img_laptop: string
+
+  @Field({ nullable: true })
+  git_link: string
 
   @IsUrl()
   link: string

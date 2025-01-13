@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { primaryFont } from '@/assets/fonts'
+import { ApolloProvider } from '@dmytro-oborskyi/network/src/config/apollo'
 
 export const metadata: Metadata = {
   title: 'Dmytro Oborskyi',
@@ -18,11 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${primaryFont.className} ${primaryFont.className} antialiased`}
-      >
-        {children}
-      </body>
+      <ApolloProvider>
+        <body
+          className={`${primaryFont.className} ${primaryFont.className} antialiased`}
+        >
+          {children}
+        </body>
+      </ApolloProvider>
     </html>
   )
 }

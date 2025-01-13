@@ -1,11 +1,13 @@
 'use client'
 
-import { Globe, Menu } from 'lucide-react'
+import { Globe, Menu, TextCursor } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from './ui/sheet'
 import { useState } from 'react'
-import { firaCode, firaCodeBold, navFont } from '@/assets/fonts'
+import { firaCode, firaCodeBold, roboto } from '@/assets/fonts'
+import { useInterval } from 'react-use'
+import { cn } from '@/lib/utils'
 
 const navItems = [
   { name: 'Home', href: '#' },
@@ -16,9 +18,12 @@ const navItems = [
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isCursor, setCursor] = useState(true)
+
+  useInterval(() => setCursor((prev) => !prev), 1000)
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md sticky top-0 z-10">
       <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between min-h-24">
           <div className="flex-shrink-0">
@@ -28,9 +33,7 @@ function Header() {
           </div>
           <div className="flex md:gap-6 items-center">
             {/* Desktop Nav */}
-            <nav
-              className={`md:flex hidden gap-7 text-lg ${navFont.className}`}
-            >
+            <nav className={`md:flex hidden gap-7 text-lg ${roboto.className}`}>
               <Link
                 href="#"
                 className="hover:opacity-60 transition duration-200"
@@ -61,13 +64,17 @@ function Header() {
                   </Button>
                 </SheetTrigger>
 
-                <SheetContent side="top" className="w-full px-0 pt-12 pb-0">
+                <SheetContent side="top" className="w-full px-0 pt-12 pb-0 ">
                   <SheetTitle
-                    className={`absolute top-3.5 left-3 ${firaCodeBold.className} `}
+                    className={cn(
+                      'absolute top-3.5 left-3 flex items-center',
+                      firaCodeBold.className,
+                    )}
                   >
                     Dmytro Oborskyi
+                    {isCursor && <TextCursor className="-ml-1.5 opacity-60" />}
                   </SheetTitle>
-                  <nav className={`flex flex-col ${navFont.className}`}>
+                  <nav className={`flex flex-col py-2 ${roboto.className}`}>
                     {navItems.map((item) => (
                       <Link
                         key={item.name}

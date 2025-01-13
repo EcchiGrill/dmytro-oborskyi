@@ -1,0 +1,20 @@
+{
+  "name": "@dmytro-oborskyi/network",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/named-operations-object": "^3.1.0",
+    "@graphql-codegen/typed-document-node": "^5.0.12"
+  },
+  "scripts": {
+    "codegen": "graphql-codegen --config codegen.ts"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.12.5"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

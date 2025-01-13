@@ -3,7 +3,10 @@ import { Project } from '../entities/project.entity'
 
 export class CreateProject extends PickType(Project, [
   'name',
-  'preview',
-  'preview_mobile',
   'link',
+  'img_mobile',
+  'img_desktop',
+  'img_laptop',
+  'git_link',
+  'description',
 ]) {}

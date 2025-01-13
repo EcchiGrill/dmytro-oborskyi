@@ -12,14 +12,12 @@ export default {
       gridTemplateColumns: {
         home: '200px 1fr 200px',
       },
-      height: {
-        home: 'calc(100vh - 6rem)',
-      },
       gridTemplateRows: {
         home: '200px 1fr 200px',
       },
       screens: {
         '3xl': '1800px',
+        '4xl': '2100px',
       },
       colors: {
         background: 'hsl(var(--background))',

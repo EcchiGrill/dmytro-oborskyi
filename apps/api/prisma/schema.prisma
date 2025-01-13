@@ -16,8 +16,11 @@ datasource db {
 model Project {
   uid      String           @id @default(uuid())
   name     String
-  preview  String
-  preview_mobile  String?
+  description String?
+  img_desktop  String?
+  img_laptop  String?
+  img_mobile  String?
+  git_link String?
   link     String
   featured FeaturedProject?
 

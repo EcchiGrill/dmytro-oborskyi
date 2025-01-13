@@ -3,10 +3,13 @@
 # ------------------------------------------------------
 
 type Project {
-  preview_mobile: String
+  description: String
+  img_mobile: String
+  img_desktop: String
+  img_laptop: String
+  git_link: String
   uid: String!
   name: String!
-  preview: String!
   link: String!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -32,16 +35,22 @@ type Mutation {
 }
 
 input CreateProjectInput {
-  preview_mobile: String
+  description: String
+  img_mobile: String
+  img_desktop: String
+  img_laptop: String
+  git_link: String
   name: String!
-  preview: String!
   link: String!
 }
 
 input UpdateProjectInput {
-  preview_mobile: String
+  description: String
+  img_mobile: String
+  img_desktop: String
+  img_laptop: String
+  git_link: String
   name: String
-  preview: String
   link: String
   uid: String!
 }
