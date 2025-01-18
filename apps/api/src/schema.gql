@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type Project {
+  order: Int
   description: String
   img_mobile: String
   img_desktop: String
@@ -21,9 +22,19 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Query {
-  projects: [Project!]!
-  featuredProjects: [Project!]!
+  projects(orderBy: [OrderByInput!]): [Project!]!
+  featuredProjects(orderBy: [OrderByInput!]): [Project!]!
   getProject(uid: String!): Project!
+}
+
+input OrderByInput {
+  createdAt: SortOrder
+  order: SortOrder
+}
+
+enum SortOrder {
+  asc
+  desc
 }
 
 type Mutation {

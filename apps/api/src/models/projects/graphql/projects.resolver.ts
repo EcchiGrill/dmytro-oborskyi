@@ -5,19 +5,20 @@ import { RemoveProjectArgs } from './dtos/remove-project.args'
 import { UpdateProjectInput } from './dtos/update-project.input'
 import { CreateProjectInput } from './dtos/create-project.input'
 import { ProjectsService } from '../projects.service'
+import { ProjectsArgs } from './dtos/projects.args'
 
 @Resolver(() => Project)
 export class ProjectsResolver {
   constructor(private readonly projectsService: ProjectsService) {}
 
   @Query(() => [Project], { name: 'projects' })
-  getProjects() {
-    return this.projectsService.getProjects()
+  getProjects(@Args() args: ProjectsArgs) {
+    return this.projectsService.getProjects(args)
   }
 
   @Query(() => [Project], { name: 'featuredProjects' })
-  getFeaturedProjects() {
-    return this.projectsService.getFeaturedProjects()
+  getFeaturedProjects(@Args() args: ProjectsArgs) {
+    return this.projectsService.getFeaturedProjects(args)
   }
 
   @Mutation(() => Project)

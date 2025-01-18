@@ -1,13 +1,20 @@
 'use client'
 import { useQuery } from '@apollo/client'
-import { FeaturedProjectsDocument } from '@dmytro-oborskyi/network/src/gql/generated'
+import {
+  FeaturedProjectsDocument,
+  SortOrder,
+} from '@dmytro-oborskyi/network/src/gql/generated'
 import Project from './project'
+import ProjectSkeleton from './project-skeleton'
 
 function FeaturedProjects() {
-  const { data } = useQuery(FeaturedProjectsDocument)
+  const { data, loading } = useQuery(FeaturedProjectsDocument, {
+    variables: { orderBy: { order: SortOrder.Asc } },
+  })
 
   return (
     <>
+      {loading && <ProjectSkeleton />}
       {data?.featuredProjects.map((project, i) => (
         <Project
           name={project.name}

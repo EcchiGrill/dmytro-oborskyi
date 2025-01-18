@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Project as ProjectType } from '@prisma/client'
-import { IsOptional, IsString, IsUrl, IsUUID } from 'class-validator'
+import { IsInt, IsOptional, IsString, IsUrl, IsUUID } from 'class-validator'
 
 export class Project implements ProjectType {
   @ApiProperty({
@@ -14,6 +14,16 @@ export class Project implements ProjectType {
   })
   @IsString()
   name: string
+
+  @ApiProperty({
+    example: 1,
+    description: 'Order (for featured)',
+    required: false,
+    nullable: true,
+  })
+  @IsInt()
+  @IsOptional()
+  order: number
 
   @ApiProperty({
     example: 'Your Destination for Exquisite Scents',

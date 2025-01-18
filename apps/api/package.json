@@ -1,6 +1,6 @@
 {
   "name": "@dmytro-oborskyi/api",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "build": "nest build",
@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@apollo/server": "^4.11.2",
-    "@dmytro-oborskyi/sample-lib": "*",
     "@nestjs/apollo": "^12.2.2",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.3.0",

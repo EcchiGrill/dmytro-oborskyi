@@ -8,6 +8,7 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common'
@@ -15,20 +16,27 @@ import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import { CreateProject } from './dtos/create-project.dto'
 import { UpdateProject } from './dtos/update-project.dto'
 import { ProjectsService } from '../projects.service'
+import { ProjectsQueryDto } from './dtos/query.dto'
+import { PrismaService } from 'src/prisma/prisma.service'
 
 @ApiTags('projects')
 @Controller('projects')
 @UsePipes(new ValidationPipe())
 export class ProjectsController {
-  constructor(private readonly projectsService: ProjectsService) {}
+  constructor(
+    private readonly projectsService: ProjectsService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   @ApiOkResponse({
     description: 'Get projects.',
     type: [Project],
   })
   @Get()
-  getProjects() {
-    return this.projectsService.getProjects()
+  getProjects(@Query() { order, sortBy }: ProjectsQueryDto) {
+    return this.prisma.project.findMany({
+      ...(sortBy ? { orderBy: { [sortBy]: order || 'asc' } } : null),
+    })
   }
 
   @ApiOkResponse({
@@ -36,8 +44,15 @@ export class ProjectsController {
     type: [Project],
   })
   @Get('featured')
-  getFeaturedProjects() {
-    return this.projectsService.getFeaturedProjects()
+  getFeaturedProjects(@Query() { order, sortBy }: ProjectsQueryDto) {
+    return this.prisma.project.findMany({
+      where: {
+        featured: {
+          isNot: null,
+        },
+      },
+      ...(sortBy ? { orderBy: { [sortBy]: order || 'asc' } } : null),
+    })
   }
 
   @ApiCreatedResponse({

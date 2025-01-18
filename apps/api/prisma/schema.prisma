@@ -16,6 +16,7 @@ datasource db {
 model Project {
   uid      String           @id @default(uuid())
   name     String
+  order Int? @unique 
   description String?
   img_desktop  String?
   img_laptop  String?

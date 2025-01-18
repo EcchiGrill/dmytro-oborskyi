@@ -11,6 +11,9 @@ export class Project implements ProjectType {
   name: string
 
   @Field({ nullable: true })
+  order: number
+
+  @Field({ nullable: true })
   description: string
 
   @Field({ nullable: true })

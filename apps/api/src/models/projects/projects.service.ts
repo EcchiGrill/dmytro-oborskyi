@@ -2,17 +2,19 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateProjectInput } from './graphql/dtos/create-project.input'
 import { UpdateProjectInput } from './graphql/dtos/update-project.input'
+import { ProjectsArgs } from './graphql/dtos/projects.args'
 
 @Injectable()
 export class ProjectsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  getProjects() {
-    return this.prisma.project.findMany()
+  getProjects(args: ProjectsArgs) {
+    return this.prisma.project.findMany(args)
   }
 
-  getFeaturedProjects() {
+  getFeaturedProjects(args: ProjectsArgs) {
     return this.prisma.project.findMany({
+      ...args,
       where: {
         featured: {
           isNot: null,

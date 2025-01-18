@@ -39,7 +39,7 @@ const Project = ({
             )}
           >
             <p>{description}</p>
-            <div className="flex items-center font-semibold hover:opacity-85 transition-opacity duration-200">
+            <div className="flex items-center font-semibold hover:opacity-85 transition-opacity duration-200 whitespace-pre">
               <Link href={link}>View Project</Link>
               <ArrowRight className="h-4" />
             </div>
