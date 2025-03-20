@@ -6,7 +6,7 @@ import Email from '@/assets/icons/email.svg'
 import Upwork from '@/assets/icons/upwork.svg'
 import { motion } from 'motion/react'
 import Link from 'next/link'
-import { SkillsFeed } from './skills-feed'
+import { SkillsFeed } from '../skills-feed'
 
 const socialItems = [
   { icon: Github, href: '#github' },
@@ -17,9 +17,8 @@ const socialItems = [
 
 function Home() {
   return (
-    <main className="grid grid-cols-1 max-sm:grid-rows-home sm:grid-cols-home place-content-center gap-5 md:gap-14 relative snap-start pt-20">
+    <section className="grid grid-cols-1 max-sm:grid-rows-home sm:grid-cols-home place-content-center gap-5 md:gap-14 relative snap-start pt-20">
       <SkillsFeed className="max-sm:hidden" />
-
       <SkillsFeed className="sm:hidden" direction="horizontal" />
       <div className="max-md:px-10 grid grid-cols-1 2xl:grid-cols-3 my-auto text-7xl 3xl:text-8xl gap-y-4 lg:gap-y-10">
         <motion.div
@@ -96,7 +95,7 @@ function Home() {
         direction="horizontal"
         className="sm:hidden"
       />
-    </main>
+    </section>
   )
 }
 

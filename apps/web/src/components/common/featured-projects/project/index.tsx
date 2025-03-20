@@ -1,28 +1,18 @@
-import { akshar, roboto, rokkit } from '@/assets/fonts'
+import { akshar, roboto } from '@/assets/fonts'
 import { cn } from '@/lib/utils'
-import { IFeaturedProjectProps } from '@/types'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from '../ui/button'
-import { motion } from 'motion/react'
+import { IProjectProps } from './project.props'
 
-const Project = ({
-  index,
-  name,
-  link,
-  img,
-  description,
-  isLast,
-  labelPos = 'left',
-}: IFeaturedProjectProps) => {
+const Project = ({ index, name, link, img, description }: IProjectProps) => {
   return (
-    <section className="h-screen w-screen relative flex items-center snap-center">
+    <div className="h-screen w-screen flex items-center snap-center relative">
       <div
         className={cn(
           'bg-black opacity-55 h-full w-1/2 xl:w-1/3 min-w-[10rem] flex place-items-center place-content-center px-12',
 
-          labelPos === 'right' ? 'absolute right-0' : '',
+          index % 2 ? '' : 'absolute right-0',
         )}
       >
         <div className="text-white flex flex-col gap-2">
@@ -51,26 +41,12 @@ const Project = ({
         alt={name}
         className={cn(
           'absolute lg:right-20 4xl:right-72 -z-10 max-h-[120vh]',
-          labelPos === 'right' ? 'lg:left-20 4xl:left-72' : '',
+          index % 2 ? '' : 'lg:left-20 4xl:left-72',
         )}
         width={1000}
         height={100}
       />
-      {isLast && (
-        <motion.div
-          className={cn('absolute left-1/2 bottom-10 ', rokkit)}
-          initial={{ y: -100 }}
-          whileInView={{ y: 0 }}
-          whileHover={{ scale: 1.1 }}
-        >
-          <Link href={'https://github.com/EcchiGrill'}>
-            <Button className="p-6 px-7 text-xl">
-              Explore More <ArrowUpRight className="min-w-6 min-h-6" />
-            </Button>
-          </Link>
-        </motion.div>
-      )}
-    </section>
+    </div>
   )
 }
 

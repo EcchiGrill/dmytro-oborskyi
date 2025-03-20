@@ -12,7 +12,7 @@ import { motion } from 'motion/react'
 import { useInterval } from 'react-use'
 import { SKILLS_INTERVAL } from '@/lib/constants'
 import { cn } from '@/lib/utils'
-import { ISkillsFeedProps } from '@/types'
+import { ISkillsFeedProps } from './skills-feed.props'
 
 const skills = [
   { name: 'Javascript', icon: Javascript },

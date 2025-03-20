@@ -2,12 +2,13 @@
 
 import { Globe, Menu, TextCursor } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from './ui/button'
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from './ui/sheet'
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
 import { useState } from 'react'
 import { firaCode, firaCodeBold, roboto } from '@/assets/fonts'
 import { useInterval } from 'react-use'
 import { cn } from '@/lib/utils'
+import { Button } from '../ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger } from '../ui/select'
 
 const navItems = [
   { name: 'Home', href: '#' },
@@ -27,21 +28,24 @@ function Header() {
       <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between min-h-24">
           <div className="flex-shrink-0">
-            <div className={`text-lg md:text-3xl ${firaCode.className}`}>
+            <Link
+              href="/"
+              className={`text-lg md:text-3xl ${firaCode.className}`}
+            >
               Dmytro Oborskyi
-            </div>
+            </Link>
           </div>
-          <div className="flex md:gap-6 items-center">
+          <div className="flex md:gap-6 items-center relative">
             {/* Desktop Nav */}
             <nav className={`md:flex hidden gap-7 text-lg ${roboto.className}`}>
               <Link
-                href="#"
+                href="#about-me"
                 className="hover:opacity-60 transition duration-200"
               >
                 About Me
               </Link>
               <Link
-                href="#"
+                href="#portfolio"
                 className="hover:opacity-60 transition duration-200"
               >
                 Portfolio
@@ -89,13 +93,15 @@ function Header() {
                 </SheetContent>
               </Sheet>
             </div>
-            <Button
-              variant="link"
-              size="icon"
-              className="hover:text-blue-700 transition duration-200"
-            >
-              <Globe className="min-h-5 min-w-5" />
-            </Button>
+            <Select>
+              <SelectTrigger className="w-auto gap-2">
+                <Globe />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="uk">Ukrainian</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </div>
