@@ -1,6 +1,6 @@
 'use client'
 
-import { Globe, Menu, TextCursor } from 'lucide-react'
+import { Menu, TextCursor } from 'lucide-react'
 import Link from 'next/link'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
 import { useState } from 'react'
@@ -8,7 +8,8 @@ import { firaCode, firaCodeBold, roboto } from '@/assets/fonts'
 import { useInterval } from 'react-use'
 import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger } from '../ui/select'
+import UsFlag from '@/assets/icons/us.svg'
+import UaFlag from '@/assets/icons/ua.svg'
 
 const navItems = [
   { name: 'Home', href: '#' },
@@ -24,7 +25,7 @@ function Header() {
   useInterval(() => setCursor((prev) => !prev), 1000)
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-10">
+    <nav className="bg-white shadow-md sticky top-0 z-10 snap">
       <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between min-h-24">
           <div className="flex-shrink-0">
@@ -35,9 +36,11 @@ function Header() {
               Dmytro Oborskyi
             </Link>
           </div>
-          <div className="flex md:gap-6 items-center relative">
+          <div className="flex md:gap-8 items-center">
             {/* Desktop Nav */}
-            <nav className={`md:flex hidden gap-7 text-lg ${roboto.className}`}>
+            <nav
+              className={`md:flex hidden gap-7 text-lg ${roboto.className} whitespace-nowrap`}
+            >
               <Link
                 href="#about-me"
                 className="hover:opacity-60 transition duration-200"
@@ -59,7 +62,7 @@ function Header() {
             </nav>
 
             {/* Mobile Nav */}
-            <div className="md:hidden">
+            <div className="md:hidden pr-3">
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -93,15 +96,19 @@ function Header() {
                 </SheetContent>
               </Sheet>
             </div>
-            <Select>
-              <SelectTrigger className="w-auto gap-2">
-                <Globe />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="en">English</SelectItem>
-                <SelectItem value="uk">Ukrainian</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="container flex gap-5 border-l-2 border-l-gray-300 pl-6">
+              <Link
+                href="/en"
+                className="text-blue-600 flex gap-2 items-center"
+              >
+                <UsFlag width={15} height={15} />
+                US
+              </Link>
+              <Link href="/uk" className="flex gap-2 items-center">
+                <UaFlag width={15} height={15} />
+                UA
+              </Link>
+            </div>
           </div>
         </div>
       </div>

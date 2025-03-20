@@ -16,6 +16,12 @@ export class Project implements ProjectType {
   name: string
 
   @ApiProperty({
+    example: ['Typescript', 'Vue.js'],
+  })
+  @IsString({ each: true })
+  tags: string[]
+
+  @ApiProperty({
     example: 1,
     description: 'Order (for featured)',
     required: false,
@@ -28,12 +34,19 @@ export class Project implements ProjectType {
   @ApiProperty({
     example: 'Your Destination for Exquisite Scents',
     description: 'Short description (for featured)',
-    required: false,
-    nullable: true,
+    required: true,
   })
   @IsString()
-  @IsOptional()
   description: string
+
+  @ApiProperty({
+    example: 'https://i.imgur.com/21nVhqh.jpeg',
+    description: 'Preview Image(for portfolio)',
+    format: 'link',
+    required: true,
+  })
+  @IsUrl()
+  img: string
 
   @ApiProperty({
     example: 'https://i.imgur.com/fTWBurX.png',

@@ -9,4 +9,7 @@ export class CreateProject extends PickType(Project, [
   'img_laptop',
   'git_link',
   'description',
+  'img',
+  'tags',
+  'order',
 ]) {}

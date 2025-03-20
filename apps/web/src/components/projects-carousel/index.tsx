@@ -60,7 +60,7 @@ const ProjectsCarousel = () => {
             )}
           >
             <Image
-              src={project.img_desktop || project.img_mobile || '/'}
+              src={project.img}
               alt={project.name}
               fill
               className="object-cover"

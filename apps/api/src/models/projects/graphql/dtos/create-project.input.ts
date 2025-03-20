@@ -12,6 +12,11 @@ export class CreateProjectInput extends PickType(
     'img_laptop',
     'git_link',
     'description',
+    'link',
+    'description',
+    'tags',
+    'img',
+    'order',
   ],
   InputType,
 ) {}

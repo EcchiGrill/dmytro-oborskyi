@@ -47,14 +47,10 @@ const Portfolio = () => {
                   <ProjectCard
                     name={project.name}
                     link={project.link}
-                    git_link={project.git_link || ''}
-                    img={
-                      project.img_laptop ||
-                      project.img_mobile ||
-                      project.img_desktop ||
-                      ''
-                    }
-                    description={project.description || ''}
+                    tags={project.tags}
+                    git_link={project.git_link || project.link}
+                    img={project.img}
+                    description={project.description}
                   />
                 </motion.div>
               </CarouselItem>

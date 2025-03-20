@@ -28,9 +28,9 @@ function FeaturedProjects() {
             project.img_laptop ||
             project.img_mobile ||
             project.img_desktop ||
-            ''
+            project.img
           }
-          description={project.description || ''}
+          description={project.description}
           key={project.uid}
         />
       ))}

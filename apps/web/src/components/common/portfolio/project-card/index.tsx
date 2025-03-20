@@ -18,6 +18,7 @@ const ProjectCard = ({
   link,
   name,
   git_link,
+  tags,
 }: IProjectCardProps) => {
   return (
     <Card className="h-full border overflow-hidden max-w-xl">
@@ -26,7 +27,7 @@ const ProjectCard = ({
           src={img}
           alt={name}
           fill
-          className="object-cover transition-transform duration-300 hover:scale-105"
+          className="object-cover transition-transform duration-300 hover:scale-110 "
         />
       </div>
       <CardHeader>
@@ -34,8 +35,8 @@ const ProjectCard = ({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        {/* <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
             <span
               key={tag}
               className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors"
@@ -43,7 +44,7 @@ const ProjectCard = ({
               {tag}
             </span>
           ))}
-        </div> */}
+        </div>
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button asChild variant="outline" size="sm">

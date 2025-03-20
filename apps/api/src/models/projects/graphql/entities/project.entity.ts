@@ -10,11 +10,17 @@ export class Project implements ProjectType {
   @IsString()
   name: string
 
-  @Field({ nullable: true })
-  order: number
+  @IsString({ each: true })
+  tags: string[]
+
+  @IsString()
+  description: string
+
+  @IsUrl()
+  img: string
 
   @Field({ nullable: true })
-  description: string
+  order: number
 
   @Field({ nullable: true })
   img_mobile: string

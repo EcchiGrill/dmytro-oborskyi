@@ -2,9 +2,11 @@ query Projects($orderBy: [OrderByInput!]) {
   projects(orderBy: $orderBy) {
     uid
     name
+    tags
     order
     link
     git_link
+    img
     img_laptop
     img_desktop
     img_mobile
@@ -17,9 +19,11 @@ query FeaturedProjects($orderBy: [OrderByInput!]) {
   featuredProjects(orderBy: $orderBy) {
     uid
     name
+    tags
     order
     link
     git_link
+    img
     img_laptop
     img_desktop
     img_mobile
@@ -31,9 +35,11 @@ query FeaturedProjects($orderBy: [OrderByInput!]) {
 mutation CreateProject($createProjectInput: CreateProjectInput!) {
   createProject(createProjectInput: $createProjectInput) {
     name
+    tags
     order
     link
     description
+    img
     img_mobile
     img_desktop
     img_laptop

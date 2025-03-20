@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,19 +8,20 @@ datasource db {
 }
 
 model Project {
-  uid      String           @id @default(uuid())
-  name     String
-  order Int? @unique 
-  description String?
-  img_desktop  String?
+  uid         String           @id @default(uuid())
+  name        String
+  link        String
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  description String
+  git_link    String?
+  img_desktop String?
   img_laptop  String?
   img_mobile  String?
-  git_link String?
-  link     String
-  featured FeaturedProject?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  order       Int?             @unique
+  img         String
+  tags        String[]
+  featured    FeaturedProject?
 }
 
 model FeaturedProject {

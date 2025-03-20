@@ -6,8 +6,8 @@ import {
   Get,
   Param,
   ParseUUIDPipe,
-  Patch,
   Post,
+  Put,
   Query,
   UsePipes,
   ValidationPipe,
@@ -96,7 +96,7 @@ export class ProjectsController {
     description: 'The project has been successfully updated.',
     type: Project,
   })
-  @Patch(':uid')
+  @Put(':uid')
   updateProject(
     @Param('uid', ParseUUIDPipe) uid: string,
     @Body() dto: UpdateProject,

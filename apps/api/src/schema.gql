@@ -4,13 +4,15 @@
 
 type Project {
   order: Int
-  description: String
   img_mobile: String
   img_desktop: String
   img_laptop: String
   git_link: String
   uid: String!
   name: String!
+  tags: [String!]!
+  description: String!
+  img: String!
   link: String!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -46,22 +48,28 @@ type Mutation {
 }
 
 input CreateProjectInput {
-  description: String
+  order: Int
   img_mobile: String
   img_desktop: String
   img_laptop: String
   git_link: String
   name: String!
+  tags: [String!]!
+  description: String!
+  img: String!
   link: String!
 }
 
 input UpdateProjectInput {
-  description: String
+  order: Int
   img_mobile: String
   img_desktop: String
   img_laptop: String
   git_link: String
   name: String
+  tags: [String!]
+  description: String
+  img: String
   link: String
   uid: String!
 }
