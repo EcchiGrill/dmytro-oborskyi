@@ -7,10 +7,15 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useQuery } from '@apollo/client'
 import { Button } from '@/components/ui/button'
 import { ProjectsDocument } from '@dmytro-oborskyi/network/src/gql/generated'
-import { PROJECTS_CAROUSEL_INTERVAL } from '@/lib/constants'
+import {
+  PROJECTS_CAROUSEL_INTERVAL,
+  PROJECTS_CAROUSEL_MAX,
+} from '@/lib/constants'
 
 const ProjectsCarousel = () => {
-  const { data: { projects = [] } = {} } = useQuery(ProjectsDocument)
+  const { data } = useQuery(ProjectsDocument)
+  const projects =
+    data?.projects.filter((_, i) => i < PROJECTS_CAROUSEL_MAX) || []
   const [currentIndex, setCurrentIndex] = useState(0)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 

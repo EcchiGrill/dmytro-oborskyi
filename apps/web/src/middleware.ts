@@ -1,32 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
 
-const PUBLIC_FILE = /\.(.*)$/
+const intlMiddleware = createMiddleware({
+  locales: ['uk', 'en'],
+  defaultLocale: 'en',
+})
 
-export async function middleware(req: NextRequest) {
-  if (
-    req.nextUrl.pathname.startsWith('/_next') ||
-    req.nextUrl.pathname.includes('/api/') ||
-    PUBLIC_FILE.test(req.nextUrl.pathname)
-  ) {
-    return
-  }
+export function middleware(request: NextRequest) {
+  const response = intlMiddleware(request)
 
-  let locale = req.cookies.get('NEXT_LOCALE')?.value
-  const response = NextResponse.next()
-
-  if (!locale) {
-    locale = req.headers.get('accept-language')!
-
-    response.cookies.set({
-      name: 'NEXT_LOCALE',
-      value: locale,
-    })
-  }
-
-  if (!req.nextUrl.pathname.slice(1) && locale.includes('uk-UA'))
-    return NextResponse.redirect(
-      new URL(`/ua${req.nextUrl.pathname}${req.nextUrl.search}`, req.url),
-    )
-
+  response.headers.set('x-next-pathname', request.nextUrl.pathname)
   return response
+}
+
+export const config = {
+  matcher: ['/', '/(en|uk)/:path*'],
 }

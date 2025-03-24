@@ -7,6 +7,7 @@ import Upwork from '@/assets/icons/upwork.svg'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import { SkillsFeed } from '../skills-feed'
+import { useTranslations } from 'next-intl'
 
 const socialItems = [
   { icon: Github, href: '#github' },
@@ -16,6 +17,8 @@ const socialItems = [
 ]
 
 function Home() {
+  const t = useTranslations('Home')
+
   return (
     <section className="grid grid-cols-1 max-sm:grid-rows-home sm:grid-cols-home place-content-center gap-5 md:gap-14 relative snap-start pt-20">
       <SkillsFeed className="max-sm:hidden" />
@@ -26,7 +29,7 @@ function Home() {
           whileInView={{ scaleY: 1, x: 0 }}
           className="max-2xl:hidden justify-self-end"
         >
-          Hello,
+          {t('hello')}
         </motion.div>
 
         <Image
@@ -43,7 +46,7 @@ function Home() {
             initial={{ scaleY: 0, x: -100 }}
             whileInView={{ scaleY: 1, x: 0 }}
           >
-            Hello,
+            {t('hello')}
           </motion.div>
 
           <motion.div
@@ -52,7 +55,7 @@ function Home() {
             transition={{ delay: 0.5 }}
             className="whitespace-pre"
           >
-            {"I'm Dmytro!"}
+            {t('name')}
           </motion.div>
         </div>
 
@@ -62,7 +65,7 @@ function Home() {
           transition={{ delay: 0.5 }}
           className="max-2xl:hidden self-end whitespace-pre"
         >
-          {"I'm Dmytro!"}
+          {t('name')}
         </motion.div>
 
         <motion.div

@@ -4,8 +4,10 @@ import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IProjectProps } from './project.props'
+import { useTranslations } from 'next-intl'
 
 const Project = ({ index, name, link, img, description }: IProjectProps) => {
+  const t = useTranslations('Projects')
   return (
     <div className="h-screen w-screen flex items-center snap-center relative">
       <div
@@ -30,7 +32,7 @@ const Project = ({ index, name, link, img, description }: IProjectProps) => {
           >
             <p>{description}</p>
             <div className="flex items-center font-semibold hover:opacity-85 transition-opacity duration-200 whitespace-pre">
-              <Link href={link}>View Project</Link>
+              <Link href={link}>{t('view')}</Link>
               <ArrowRight className="h-4" />
             </div>
           </div>

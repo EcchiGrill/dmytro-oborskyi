@@ -11,8 +11,11 @@ import { rokkit } from '@/assets/fonts'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Project from './project'
+import { useTranslations } from 'next-intl'
 
 function FeaturedProjects() {
+  const t = useTranslations('Projects')
+
   const { data } = useSuspenseQuery(FeaturedProjectsDocument, {
     variables: { orderBy: { order: SortOrder.Asc } },
   })
@@ -42,7 +45,7 @@ function FeaturedProjects() {
       >
         <Link href={process.env.NEXT_PUBLIC_GITHUB_LINK || 'link_not_provided'}>
           <Button className="p-6 px-7 text-xl">
-            Explore More <ArrowUpRight className="min-w-6 min-h-6" />
+            {t('explore')} <ArrowUpRight className="min-w-6 min-h-6" />
           </Button>
         </Link>
       </motion.div>

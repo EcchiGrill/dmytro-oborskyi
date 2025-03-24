@@ -2,14 +2,21 @@
 
 import { Menu, TextCursor } from 'lucide-react'
 import Link from 'next/link'
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 import { useState } from 'react'
 import { firaCode, firaCodeBold, roboto } from '@/assets/fonts'
 import { useInterval } from 'react-use'
 import { cn } from '@/lib/utils'
-import { Button } from '../ui/button'
 import UsFlag from '@/assets/icons/us.svg'
 import UaFlag from '@/assets/icons/ua.svg'
+import { Button } from '@/components/ui/button'
+import IHeaderProps from './header.props'
+import { useTranslations } from 'next-intl'
 
 const navItems = [
   { name: 'Home', href: '#' },
@@ -18,16 +25,17 @@ const navItems = [
   { name: 'Contact', href: '#' },
 ]
 
-function Header() {
+function Header({ locale }: IHeaderProps) {
+  const t = useTranslations('Header')
   const [isOpen, setIsOpen] = useState(false)
   const [isCursor, setCursor] = useState(true)
 
   useInterval(() => setCursor((prev) => !prev), 1000)
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-10 snap">
+    <nav className="bg-white shadow-md sticky top-0 z-10 ">
       <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8 ">
-        <div className="flex items-center justify-between min-h-24">
+        <div className="flex flex-col md:flex-row py-4 gap-4 items-center md:justify-between min-h-24">
           <div className="flex-shrink-0">
             <Link
               href="/"
@@ -45,19 +53,19 @@ function Header() {
                 href="#about-me"
                 className="hover:opacity-60 transition duration-200"
               >
-                About Me
+                {t('about-me')}
               </Link>
               <Link
                 href="#portfolio"
                 className="hover:opacity-60 transition duration-200"
               >
-                Portfolio
+                {t('portfolio')}
               </Link>
               <Link
                 href="#"
                 className="hover:opacity-60 transition duration-200"
               >
-                Contact
+                {t('contact')}
               </Link>
             </nav>
 
@@ -96,17 +104,32 @@ function Header() {
                 </SheetContent>
               </Sheet>
             </div>
-            <div className="container flex gap-5 border-l-2 border-l-gray-300 pl-6">
-              <Link
-                href="/en"
-                className="text-blue-600 flex gap-2 items-center"
-              >
-                <UsFlag width={15} height={15} />
-                US
+            <div className="container flex border-l-2 border-l-gray-300 pl-6">
+              <Link href="/en">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    'flex gap-2 items-center px-10',
+                    locale === 'en' && 'bg-accent text-accent-foreground',
+                  )}
+                >
+                  <UsFlag width={15} height={15} />
+                  EN
+                </Button>
               </Link>
-              <Link href="/uk" className="flex gap-2 items-center">
-                <UaFlag width={15} height={15} />
-                UA
+              <Link href="/uk">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    'flex gap-2 items-center px-10',
+                    locale === 'uk' && 'bg-accent text-accent-foreground',
+                  )}
+                >
+                  <UaFlag width={15} height={15} />
+                  UA
+                </Button>
               </Link>
             </div>
           </div>

@@ -11,6 +11,7 @@ import { ExternalLink, Github } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IProjectCardProps } from './project-card.props'
+import { useTranslations } from 'next-intl'
 
 const ProjectCard = ({
   description,
@@ -20,6 +21,8 @@ const ProjectCard = ({
   git_link,
   tags,
 }: IProjectCardProps) => {
+  const t = useTranslations('Portfolio')
+
   return (
     <Card className="h-full border overflow-hidden max-w-xl">
       <div className="relative h-72 w-full overflow-hidden">
@@ -50,13 +53,13 @@ const ProjectCard = ({
         <Button asChild variant="outline" size="sm">
           <Link href={git_link} target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
-            Code
+            {t('code')}
           </Link>
         </Button>
         <Button asChild size="sm">
           <Link href={link} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="mr-2 h-4 w-4" />
-            Demo
+            {t('demo')}
           </Link>
         </Button>
       </CardFooter>

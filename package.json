@@ -27,9 +27,10 @@
   "author": "EcchiGrill",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.7.2",
     "husky": "^8.0.0",
-    "nx": "20.3.0"
+    "nx": "20.3.0",
+    "nx-cloud": "^19.1.0",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "prettier": "^3.4.2"

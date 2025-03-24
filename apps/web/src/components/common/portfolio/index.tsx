@@ -14,8 +14,10 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 const Portfolio = () => {
+  const t = useTranslations('Portfolio')
   const [activeIndex, setActiveIndex] = useState(0)
   const { data } = useQuery(ProjectsDocument, {
     variables: { orderBy: { createdAt: SortOrder.Desc } },
@@ -27,7 +29,7 @@ const Portfolio = () => {
       id="portfolio"
     >
       <div className="container mx-auto place-content-center flex flex-col h-full gap-10">
-        <h1 className="text-5xl">Portfolio</h1>
+        <h1 className="text-5xl">{t('title')}</h1>
         <Carousel
           className="w-full"
           onSelect={(index) => setActiveIndex(index as unknown as number)}
@@ -41,7 +43,7 @@ const Portfolio = () => {
                 <motion.div
                   initial={{ y: 200 }}
                   whileInView={{ y: 0 }}
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 0.98 }}
                   transition={{ duration: 0.3 }}
                 >
                   <ProjectCard
