@@ -1,0 +1,10 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4200:4200' # Match this with your NestJS server port
+    env_file:
+      - .env # Loads environment variables (DATABASE_URL)
+    depends_on: []

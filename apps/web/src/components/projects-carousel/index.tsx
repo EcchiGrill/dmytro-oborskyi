@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useQuery } from '@apollo/client'
 import { Button } from '@/components/ui/button'
-import { ProjectsDocument } from '@dmytro-oborskyi/network/src/gql/generated'
+import { ProjectsDocument } from 'dmytro-oborskyi_network/src/gql/generated'
 import {
   PROJECTS_CAROUSEL_INTERVAL,
   PROJECTS_CAROUSEL_MAX,

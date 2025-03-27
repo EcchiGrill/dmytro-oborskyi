@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { primaryFont } from '@/assets/fonts'
-import { ApolloProvider } from '@dmytro-oborskyi/network/src/config/apollo'
+import { ApolloProvider } from 'dmytro-oborskyi_network/src/config/apollo'
 import { getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { ReactNode } from 'react'

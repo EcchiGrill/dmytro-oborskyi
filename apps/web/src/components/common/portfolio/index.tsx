@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import {
   ProjectsDocument,
   SortOrder,
-} from '@dmytro-oborskyi/network/src/gql/generated'
+} from 'dmytro-oborskyi_network/src/gql/generated'
 import { motion } from 'motion/react'
 import ProjectCard from './project-card'
 import {

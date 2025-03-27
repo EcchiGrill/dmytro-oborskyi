@@ -3,7 +3,7 @@ import { useSuspenseQuery } from '@apollo/client'
 import {
   FeaturedProjectsDocument,
   SortOrder,
-} from '@dmytro-oborskyi/network/src/gql/generated'
+} from 'dmytro-oborskyi_network/src/gql/generated'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'

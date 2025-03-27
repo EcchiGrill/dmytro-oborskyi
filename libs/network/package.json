@@ -1,8 +1,7 @@
 {
-  "name": "@dmytro-oborskyi/network",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "dmytro-oborskyi_network",
   "license": "MIT",
+  "version": "0.0.1",
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.3",
     "@graphql-codegen/named-operations-object": "^3.1.0",

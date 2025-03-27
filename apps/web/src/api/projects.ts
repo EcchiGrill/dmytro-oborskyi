@@ -1,8 +1,8 @@
-import { Project } from '@dmytro-oborskyi/network/src/gql/generated'
+import { Project } from 'dmytro-oborskyi_network/src/gql/generated'
 import { fetchApi } from './fetchApi'
 
 export const getProjects = async (): Promise<Project[]> =>
   fetchApi({
-    endpoint: '/projects',
+    endpoint: 'projects',
     method: 'GET',
   })

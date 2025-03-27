@@ -4,6 +4,8 @@ import createNextIntlPlugin from 'next-intl/plugin'
 const withNextIntl = createNextIntlPlugin()
 
 const nextConfig: NextConfig = {
+  transpilePackages: ['dmytro-oborskyi_network'],
+
   images: {
     remotePatterns: [
       {
@@ -40,6 +42,7 @@ const nextConfig: NextConfig = {
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i
+    config.resolve.fallback = { fs: false, path: false }
 
     return config
   },
