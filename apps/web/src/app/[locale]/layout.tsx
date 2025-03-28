@@ -9,7 +9,7 @@ import { ReactNode } from 'react'
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL as string),
   title: 'Dmytro Oborskyi',
-  description: 'Dmytro Oborskyi CV website',
+  description: 'Dmytro Oborskyi - CV',
   creator: 'Dmytro Oborskyi',
   category: 'CV',
   keywords: [
@@ -26,12 +26,21 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, nocache: true },
   openGraph: {
     title: 'Dmytro Oborskyi',
-    description: 'Dmytro Oborskyi CV website',
+    description: 'Dmytro Oborskyi - CV ',
     type: 'website',
     url: process.env.NEXT_PUBLIC_URL,
+    images: [
+      {
+        url: process.env.NEXT_PUBLIC_URL + '/icon.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Dmytro Oborskyi - CV',
+      },
+    ],
   },
   icons: {
-    icon: '../favicon.ico',
+    icon: '/icon.svg',
+    apple: '/icon.svg',
   },
 }
 

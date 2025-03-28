@@ -1,8 +1,10 @@
 {
   "Header": {
+    "home": "Home",
     "about-me": "About Me",
     "portfolio": "Portfolio",
-    "contact": "Contact"
+    "contact": "Contact",
+    "open-menu": "Open Menu"
   },
   "Home": {
     "hello": "Hello,",
@@ -14,20 +16,21 @@
   },
   "AboutMe": {
     "title": "About me",
-    "info": "PERSONAL INFO",
+    "info": "INFO",
     "name-title": "Name",
     "name": "Dmytro Oborskyi",
     "date-title": "Date of birth",
     "email-title": "Email",
     "location-title": "Location",
     "location": "Kyiv, Ukraine",
-    "skills": "MAIN SKILLS",
+    "skills": "SKILLS",
     "cv": "Download CV",
     "description": "Hello! I'm a full-stack developer with a strong fundamentals in core libraries and frameworks, including React, Redux, Next,js, Vue.js, GraphQL, Prisma, etc. I use TypeScript in my projects to ensure maintainability, scalability, and clean, efficient code. With a passion for continuous growth, I am committed to discover best practices and staying ahead of emerging trends to deliver top-tier solutions. I'm always eager to take on new challenges and collaborate on exciting projects!"
   },
   "Portfolio": {
     "title": "Portfolio",
     "code": "Code",
-    "demo": "Demo"
+    "demo": "Demo",
+    "swipe": "Swipe left or right to view more projects"
   }
 }

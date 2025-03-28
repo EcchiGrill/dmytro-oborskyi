@@ -1,3 +1,4 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -11,7 +12,9 @@ import { ExternalLink, Github } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IProjectCardProps } from './project-card.props'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+import { translateToUk } from '@/helpers/translateToUk'
 
 const ProjectCard = ({
   description,
@@ -22,6 +25,26 @@ const ProjectCard = ({
   tags,
 }: IProjectCardProps) => {
   const t = useTranslations('Portfolio')
+  const locale = useLocale()
+  const [descriptionText, setDescriptionText] = useState(description)
+
+  const translationHandler = async () => {
+    try {
+      const data = await translateToUk(description)
+      setDescriptionText(data)
+    } catch (error) {
+      console.error('Translation error:', error)
+      setDescriptionText(description)
+    }
+  }
+
+  useEffect(() => {
+    if (locale === 'uk') {
+      translationHandler()
+    } else {
+      setDescriptionText(description)
+    }
+  }, [locale])
 
   return (
     <Card className="h-full border overflow-hidden max-w-xl">
@@ -35,7 +58,7 @@ const ProjectCard = ({
       </div>
       <CardHeader>
         <CardTitle>{name}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription>{descriptionText}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex flex-wrap gap-2">

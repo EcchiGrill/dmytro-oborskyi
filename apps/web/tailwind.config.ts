@@ -16,12 +16,18 @@ export default {
         home: '200px 1fr 200px',
       },
       screens: {
+        xs: '400px',
         '3xl': '1800px',
         '4xl': '2100px',
       },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        aside: 'rgba(0, 0, 0, 0.65)',
+        gray: {
+          DEFAULT: '#a6a6a6',
+          light: '#b0b0b0',
+        },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',

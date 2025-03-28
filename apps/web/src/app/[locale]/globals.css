@@ -65,8 +65,10 @@
   }
 }
 
-html {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+@media (min-width: 1280px) {
+  html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
 }

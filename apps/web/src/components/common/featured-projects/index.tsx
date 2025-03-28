@@ -38,7 +38,10 @@ function FeaturedProjects() {
         />
       ))}
       <motion.div
-        className={cn('absolute left-1/2 bottom-10 ', rokkit)}
+        className={cn(
+          'absolute left-0 right-0 mx-auto bottom-10 w-fit',
+          rokkit,
+        )}
         initial={{ y: -100 }}
         whileInView={{ y: 0 }}
         whileHover={{ scale: 1.1 }}

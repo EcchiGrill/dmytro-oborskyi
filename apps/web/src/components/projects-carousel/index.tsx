@@ -53,7 +53,7 @@ const ProjectsCarousel = () => {
   }, [currentIndex, goToNextSlide])
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-8">
+    <div className="w-full max-w-xl 2xl:max-w-2xl 3xl:max-w-4xl mx-auto px-4 py-8 ">
       <div className="relative overflow-hidden rounded-lg aspect-[16/9]">
         {/* Slides */}
         {projects.map((project, index) => (
@@ -61,7 +61,7 @@ const ProjectsCarousel = () => {
             key={project.uid}
             className={cn(
               'absolute inset-0 transition-opacity duration-1000',
-              index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0',
+              index === currentIndex ? 'opacity-100' : 'opacity-0 z-0',
             )}
           >
             <Image

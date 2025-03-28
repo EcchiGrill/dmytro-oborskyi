@@ -1,37 +1,61 @@
+'use client'
 import { akshar, roboto } from '@/assets/fonts'
 import { cn } from '@/lib/utils'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IProjectProps } from './project.props'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+import { translateToUk } from '@/helpers/translateToUk'
 
 const Project = ({ index, name, link, img, description }: IProjectProps) => {
   const t = useTranslations('Projects')
+  const locale = useLocale()
+  const [descriptionText, setDescriptionText] = useState(description)
+
+  const translationHandler = async () => {
+    try {
+      const data = await translateToUk(description)
+      setDescriptionText(data)
+    } catch (error) {
+      console.error('Translation error:', error)
+      setDescriptionText(description)
+    }
+  }
+
+  useEffect(() => {
+    if (locale === 'uk') {
+      translationHandler()
+    } else {
+      setDescriptionText(description)
+    }
+  }, [locale])
+
   return (
     <div className="h-screen w-screen flex items-center snap-center relative">
       <div
         className={cn(
-          'bg-black opacity-55 h-full w-1/2 xl:w-1/3 min-w-[10rem] flex place-items-center place-content-center px-12',
+          'bg-aside h-full w-1/2 xl:w-1/3 min-w-[10rem] flex place-items-center place-content-center px-12',
 
           index % 2 ? '' : 'absolute right-0',
         )}
       >
         <div className="text-white flex flex-col gap-2">
           <h1
-            className={cn('text-5xl md:text-8xl opacity-80', akshar.className)}
+            className={cn('text-5xl md:text-8xl text-gray', akshar.className)}
           >
             0{index}
           </h1>
           <h2 className="text-2xl md:text-4xl font-bold">{name}</h2>
           <div
             className={cn(
-              'mt-3 flex flex-col gap-1 max-md:text-sm',
+              'mt-1.5 flex flex-col gap-1 max-md:text-sm ',
               roboto.className,
             )}
           >
-            <p>{description}</p>
-            <div className="flex items-center font-semibold hover:opacity-85 transition-opacity duration-200 whitespace-pre">
+            <p className="text-gray-light">{descriptionText}</p>
+            <div className="mt-1 flex items-center font-semibold hover:opacity-85 transition-opacity duration-200 whitespace-pre">
               <Link href={link}>{t('view')}</Link>
               <ArrowRight className="h-4" />
             </div>

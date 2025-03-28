@@ -10,17 +10,17 @@ import { SkillsFeed } from '../skills-feed'
 import { useTranslations } from 'next-intl'
 
 const socialItems = [
-  { icon: Github, href: '#github' },
-  { icon: Linkedin, href: '#linkedin' },
-  { icon: Email, href: '#email' },
-  { icon: Upwork, href: '#upwork' },
+  { icon: Github, href: process.env.NEXT_PUBLIC_GITHUB_LINK },
+  { icon: Linkedin, href: process.env.NEXT_PUBLIC_LINKEDIN_LINK },
+  { icon: Email, href: process.env.NEXT_PUBLIC_EMAIL },
+  { icon: Upwork, href: process.env.NEXT_PUBLIC_UPWORK_LINK },
 ]
 
 function Home() {
   const t = useTranslations('Home')
 
   return (
-    <section className="grid grid-cols-1 max-sm:grid-rows-home sm:grid-cols-home place-content-center gap-5 md:gap-14 relative snap-start pt-20">
+    <section className="grid grid-cols-1 max-sm:grid-rows-home sm:grid-cols-home place-content-center gap-5 md:gap-14 relative snap-start lg:pt-20">
       <SkillsFeed className="max-sm:hidden" />
       <SkillsFeed className="sm:hidden" direction="horizontal" />
       <div className="max-md:px-10 grid grid-cols-1 2xl:grid-cols-3 my-auto text-7xl 3xl:text-8xl gap-y-4 lg:gap-y-10">
@@ -78,10 +78,14 @@ function Home() {
             {'// Full-stack Developer //'}
           </div>
           <ul className="flex gap-2 mt-5 opacity-80 ">
-            {socialItems.map((item) => (
+            {socialItems.map((item, i) => (
               <Link
-                key={item.href}
-                href={item.href}
+                key={i}
+                href={
+                  item.href?.includes('@')
+                    ? `mailto:${item.href as string}`
+                    : (item.href as string)
+                }
                 target="_blank"
                 className="hover:opacity-85 duration-200 transition"
               >
