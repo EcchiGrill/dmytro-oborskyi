@@ -48,13 +48,29 @@ export class ProjectsService {
     })
   }
 
-  removeFeaturedProject(uid: string) {
+  async removeFeaturedProject(uid: string) {
+    const featuredIds = await this.prisma.featuredProject.findMany()
+
+    if (!featuredIds.find((o) => o.uid === uid))
+      throw new HttpException(
+        'This project is not featured or does not exist',
+        HttpStatus.NOT_FOUND,
+      )
+
     return this.prisma.featuredProject.delete({
       where: { uid },
     })
   }
 
-  getProject(uid: string) {
+  async getProject(uid: string) {
+    const featuredIds = await this.prisma.featuredProject.findMany()
+
+    if (!featuredIds.find((o) => o.uid === uid))
+      throw new HttpException(
+        'This project does not exist',
+        HttpStatus.NOT_FOUND,
+      )
+
     return this.prisma.project.findUnique({
       where: { uid },
     })
@@ -64,14 +80,30 @@ export class ProjectsService {
     return this.prisma.project.create({ data })
   }
 
-  updateProject(uid: string, data: UpdateProjectInput) {
+  async updateProject(uid: string, data: UpdateProjectInput) {
+    const featuredIds = await this.prisma.project.findMany()
+
+    if (!featuredIds.find((o) => o.uid === uid))
+      throw new HttpException(
+        'This project does not exist',
+        HttpStatus.NOT_FOUND,
+      )
+
     return this.prisma.project.update({
       where: { uid },
       data,
     })
   }
 
-  removeProject(uid: string) {
+  async removeProject(uid: string) {
+    const featuredIds = await this.prisma.project.findMany()
+
+    if (!featuredIds.find((o) => o.uid === uid))
+      throw new HttpException(
+        'This project does not exist',
+        HttpStatus.NOT_FOUND,
+      )
+
     return this.prisma.project.delete({ where: { uid } })
   }
 }

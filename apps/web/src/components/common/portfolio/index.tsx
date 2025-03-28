@@ -53,6 +53,7 @@ const Portfolio = () => {
                   git_link={project.git_link || project.link}
                   img={project.img}
                   description={project.description}
+                  description_uk={project.description_uk}
                 />
               </motion.div>
             </CarouselItem>

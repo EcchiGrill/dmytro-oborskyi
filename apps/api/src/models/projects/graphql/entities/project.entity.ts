@@ -16,6 +16,9 @@ export class Project implements ProjectType {
   @IsString()
   description: string
 
+  @IsString()
+  description_uk: string
+
   @IsUrl()
   img: string
 

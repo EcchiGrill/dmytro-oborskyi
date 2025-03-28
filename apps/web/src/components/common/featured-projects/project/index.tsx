@@ -7,26 +7,22 @@ import Link from 'next/link'
 import { IProjectProps } from './project.props'
 import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { translateToUk } from '@/helpers/translateToUk'
 
-const Project = ({ index, name, link, img, description }: IProjectProps) => {
+const Project = ({
+  index,
+  name,
+  link,
+  img,
+  description,
+  description_uk,
+}: IProjectProps) => {
   const t = useTranslations('Projects')
   const locale = useLocale()
   const [descriptionText, setDescriptionText] = useState(description)
 
-  const translationHandler = async () => {
-    try {
-      const data = await translateToUk(description)
-      setDescriptionText(data)
-    } catch (error) {
-      console.error('Translation error:', error)
-      setDescriptionText(description)
-    }
-  }
-
   useEffect(() => {
     if (locale === 'uk') {
-      translationHandler()
+      setDescriptionText(description_uk)
     } else {
       setDescriptionText(description)
     }

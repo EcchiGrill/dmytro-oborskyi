@@ -40,6 +40,14 @@ export class Project implements ProjectType {
   description: string
 
   @ApiProperty({
+    example: 'Місце для вишуканих ароматів',
+    description: 'Short description (ukrainian version)',
+    required: true,
+  })
+  @IsString()
+  description_uk: string
+
+  @ApiProperty({
     example: 'https://i.imgur.com/21nVhqh.jpeg',
     description: 'Preview Image(for portfolio)',
     format: 'link',

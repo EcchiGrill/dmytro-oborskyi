@@ -53,7 +53,7 @@ function Home() {
             initial={{ scaleY: 0, x: 100 }}
             whileInView={{ scaleY: 1, x: 0 }}
             transition={{ delay: 0.5 }}
-            className="whitespace-pre"
+            className="whitespace-pre -ml-1.5"
           >
             {t('name')}
           </motion.div>

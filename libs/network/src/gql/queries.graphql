@@ -11,6 +11,7 @@ query Projects($orderBy: [OrderByInput!]) {
     img_desktop
     img_mobile
     description
+    description_uk
     createdAt
   }
 }
@@ -28,6 +29,7 @@ query FeaturedProjects($orderBy: [OrderByInput!]) {
     img_desktop
     img_mobile
     description
+    description_uk
     createdAt
   }
 }
@@ -39,6 +41,7 @@ mutation CreateProject($createProjectInput: CreateProjectInput!) {
     order
     link
     description
+    description_uk
     img
     img_mobile
     img_desktop
