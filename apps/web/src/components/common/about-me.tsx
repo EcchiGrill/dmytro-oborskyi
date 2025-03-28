@@ -95,6 +95,15 @@ function AboutMe() {
                 </Link>
               </li>
               <li>
+                {t('phone-title')}:{' '}
+                <Link
+                  href={`tel:+380953424041`}
+                  className="opacity-50 font-thin underline"
+                >
+                  +380953424041
+                </Link>
+              </li>
+              <li>
                 {t('location-title')}:{' '}
                 <span className="opacity-50 font-thin">{t('location')}</span>
               </li>

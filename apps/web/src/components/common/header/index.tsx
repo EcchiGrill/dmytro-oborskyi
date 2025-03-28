@@ -19,7 +19,7 @@ import IHeaderProps from './header.props'
 import { useTranslations } from 'next-intl'
 
 const navItems = [
-  { name: 'home', href: '/' },
+  { name: 'home', href: '#' },
   { name: 'about-me', href: '#about-me' },
   { name: 'portfolio', href: '#portfolio' },
   { name: 'contact', href: '#contact' },

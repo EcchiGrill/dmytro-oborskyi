@@ -17,7 +17,7 @@
     "@svgr/webpack": "^8.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "dmytro-oborskyi_network": "^0.0.1",
+    "dmytro-oborskyi_network": "^0.0.2",
     "embla-carousel-react": "^8.5.2",
     "lucide-react": "^0.468.0",
     "motion": "^11.15.0",

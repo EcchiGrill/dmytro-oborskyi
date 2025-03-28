@@ -34,6 +34,7 @@ function FeaturedProjects() {
             project.img
           }
           description={project.description}
+          description_uk={project.description_uk}
           key={project.uid}
         />
       ))}

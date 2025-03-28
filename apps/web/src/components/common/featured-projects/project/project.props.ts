@@ -4,4 +4,5 @@ export interface IProjectProps {
   link: string
   img: string
   description: string
+  description_uk: string
 }

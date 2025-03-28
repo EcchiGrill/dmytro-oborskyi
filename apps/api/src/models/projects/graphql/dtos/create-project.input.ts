@@ -14,6 +14,7 @@ export class CreateProjectInput extends PickType(
     'description',
     'link',
     'description',
+    'description_uk',
     'tags',
     'img',
     'order',

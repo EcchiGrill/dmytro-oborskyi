@@ -12,6 +12,7 @@ type Project {
   name: String!
   tags: [String!]!
   description: String!
+  description_uk: String!
   img: String!
   link: String!
   createdAt: DateTime!
@@ -56,6 +57,7 @@ input CreateProjectInput {
   name: String!
   tags: [String!]!
   description: String!
+  description_uk: String!
   img: String!
   link: String!
 }
@@ -69,6 +71,7 @@ input UpdateProjectInput {
   name: String
   tags: [String!]
   description: String
+  description_uk: String
   img: String
   link: String
   uid: String!

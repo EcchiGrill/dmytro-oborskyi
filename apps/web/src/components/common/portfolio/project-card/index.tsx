@@ -14,10 +14,10 @@ import Link from 'next/link'
 import { IProjectCardProps } from './project-card.props'
 import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { translateToUk } from '@/helpers/translateToUk'
 
 const ProjectCard = ({
   description,
+  description_uk,
   img,
   link,
   name,
@@ -28,19 +28,9 @@ const ProjectCard = ({
   const locale = useLocale()
   const [descriptionText, setDescriptionText] = useState(description)
 
-  const translationHandler = async () => {
-    try {
-      const data = await translateToUk(description)
-      setDescriptionText(data)
-    } catch (error) {
-      console.error('Translation error:', error)
-      setDescriptionText(description)
-    }
-  }
-
   useEffect(() => {
     if (locale === 'uk') {
-      translationHandler()
+      setDescriptionText(description_uk)
     } else {
       setDescriptionText(description)
     }
