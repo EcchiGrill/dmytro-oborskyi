@@ -1,4 +1,5 @@
 import AboutMe from '@/components/common/about-me'
+import Contact from '@/components/common/contact'
 import FeaturedProjects from '@/components/common/featured-projects'
 import Header from '@/components/common/header'
 import Home from '@/components/common/home'
@@ -9,6 +10,7 @@ import { Suspense } from 'react'
 
 export default async function App() {
   const locale = (await getCookie('NEXT_LOCALE')) || 'en'
+
   return (
     <>
       <Header locale={locale} />
@@ -18,6 +20,7 @@ export default async function App() {
       </Suspense>
       <AboutMe />
       <Portfolio />
+      <Contact />
     </>
   )
 }

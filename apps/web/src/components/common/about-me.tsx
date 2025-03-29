@@ -1,6 +1,6 @@
 'use client'
 
-import { Pencil, Star } from 'lucide-react'
+import { FileText, Pencil, Star } from 'lucide-react'
 import Link from 'next/link'
 import ProjectsCarousel from '../projects-carousel'
 import { useTranslations } from 'next-intl'
@@ -100,7 +100,7 @@ function AboutMe() {
                   href={`tel:+380953424041`}
                   className="opacity-50 font-thin underline"
                 >
-                  +380953424041
+                  {'+38(095)342-40-41'}
                 </Link>
               </li>
               <li>
@@ -180,9 +180,9 @@ function AboutMe() {
               <Link
                 href={process.env.NEXT_PUBLIC_CV_LINK || 'link_not_provided'}
                 target="_blank"
-                className="underline opacity-70 mt-4 font-bold text-blue-800 self-end"
+                className="underline opacity-70 mt-4 font-bold text-blue-800 self-end flex place-items-center gap-2"
               >
-                {t('cv')}
+                <FileText /> {t('cv')}
               </Link>
             </div>
           </div>

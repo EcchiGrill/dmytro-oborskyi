@@ -20,6 +20,9 @@ export default {
         '3xl': '1800px',
         '4xl': '2100px',
       },
+      backgroundImage: {
+        contact: "url('/contact-bg.png')",
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -41,8 +44,8 @@ export default {
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: '#5E6368',
+          foreground: '#ffff',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',

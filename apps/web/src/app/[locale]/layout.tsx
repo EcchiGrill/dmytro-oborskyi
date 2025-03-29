@@ -5,6 +5,7 @@ import { ApolloProvider } from 'dmytro-oborskyi_network/src/config/apollo'
 import { getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { ReactNode } from 'react'
+import { ToastContainer } from 'react-toastify'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL as string),
@@ -65,6 +66,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             {children}
           </NextIntlClientProvider>
+          <ToastContainer />
         </body>
       </ApolloProvider>
     </html>

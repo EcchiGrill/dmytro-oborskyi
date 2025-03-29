@@ -88,7 +88,7 @@ const ProjectsCarousel = () => {
           }}
           aria-label="Previous project"
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-5 w-5" fill="black" />
         </Button>
 
         <Button
@@ -101,7 +101,7 @@ const ProjectsCarousel = () => {
           }}
           aria-label="Next project"
         >
-          <ChevronRight className="h-5 w-5" />
+          <ChevronRight className="h-5 w-5" fill="black" />
         </Button>
       </div>
 

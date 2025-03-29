@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 import IHeaderProps from './header.props'
 import { useTranslations } from 'next-intl'
 
-const navItems = [
+export const navItems = [
   { name: 'home', href: '#' },
   { name: 'about-me', href: '#about-me' },
   { name: 'portfolio', href: '#portfolio' },
