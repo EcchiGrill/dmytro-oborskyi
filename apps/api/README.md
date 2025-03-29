@@ -1,42 +1,62 @@
+# 🛠️ Backend - Dmytro Oborskyi's Portfolio
+
+This is the **backend** for my personal portfolio website, built with **NestJS** and **GraphQL/REST API**. It handles authentication, content management, and API endpoints for the frontend.
+
 <p align="center">
-  <a href="http://localhost:4200/docs" target="_blank"><img src="./public/swagger.png" alt="Swagger" /></a>
+  <a href="http://localhost:4200/api/docs" target="_blank"><img src="./public/swagger.png" alt="Swagger" /></a>
 </p>
 
-## Compile and run the project
+---
+
+## 🚀 Features
+
+- **📡 REST & GraphQL API** – Supports both **REST API** and **GraphQL** for flexible data retrieval.
+- **📜 Prisma ORM** – Database management using **PostgreSQL** with **Prisma**.
+- **📑 Swagger API Docs** – Available at **`/api/docs`** for easy API exploration.
+- **📧 Email Service** – Handles email submissions from the frontend.
+
+---
+
+## 🏗️ Getting Started
+
+Follow these steps to run the backend locally:
+
+### 1️⃣ Install Dependencies in _root directory_ if you haven't installed them yet
+
+### 2️⃣ Navigate to the Backend Directory
 
 ```bash
-# development
-$ yarn dev
-
-# production mode
-$ yarn prod
+cd apps/api
 ```
 
-## Description
+### 3️⃣ Configure Environment Variables
 
-My [Website](https://dmytro-oborskyi.com/) portfolio Projects/FeaturedProjects API:
+Create a **.env** file in the **apps/api/** directory and add variables mentioned in **.env.example**
 
-- Back-end - NestJS, GraphQL
-- DB - Prisma, Docker
-- Both GraphQL, Rest support included(<b>/api</b> for REST queries)
-- Swagger - [localhost:4200/docs](http://localhost:4200/docs)
+### 4️⃣ Generate Prisma Client
 
-# Startup main cmds
+Before running the server, generate the Prisma client:
 
 ```bash
-# Project startup. localhost:4200 - by default
-$ yarn dev
-
-# Prisma startup. localhost:5555 - by default
-$ npx prisma studio
+npx prisma generate
 ```
 
-Don't forget to configure Docker or any other Postgres DB!
+### 5️⃣ Start the Development Server
 
-## Stay in touch
+Using Yarn:
 
-Author - [Dmytro Oborskyi](https://dmytro-oborskyi.com/)
+```bash
+yarn dev
+```
 
-## License
+Or using npm:
 
-Project is [MIT licensed](https://github.com/EcchiGrill/dmytro-oborskyi/blob/dev/LICENSE).
+```bash
+npm run dev
+```
+
+## The backend will be available at:
+
+- 🔗 REST API: **[localhost:4200](http://localhost:4200)**
+- 🔗 Swagger API Docs: **[localhost:4200/api/docs](http://localhost:4200/api/docs)**
+- 🔗 GraphQL Playground: **[localhost:4200/graphql](http://localhost:4200/graphql)**

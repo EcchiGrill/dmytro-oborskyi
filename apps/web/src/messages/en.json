@@ -33,5 +33,16 @@
     "code": "Code",
     "demo": "Demo",
     "swipe": "Swipe left or right to view more projects"
+  },
+  "Contact": {
+    "title": "Contact me!",
+    "email": "Email",
+    "name": "Name",
+    "content": "Content",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "fields": "Please fill all fields!",
+    "error": "Error sending email!",
+    "success": "Your message has been successfully sent!"
   }
 }

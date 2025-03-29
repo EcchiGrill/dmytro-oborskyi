@@ -8,21 +8,21 @@ datasource db {
 }
 
 model Project {
-  uid         String           @id @default(uuid())
-  name        String
-  link        String
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
-  description String
+  uid            String           @id @default(uuid())
+  name           String
+  link           String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  description    String
+  git_link       String?
+  img_desktop    String?
+  img_laptop     String?
+  img_mobile     String?
+  order          Int?             @unique
+  img            String
+  tags           String[]
   description_uk String
-  git_link    String?
-  img_desktop String?
-  img_laptop  String?
-  img_mobile  String?
-  order       Int?             @unique
-  img         String
-  tags        String[]
-  featured    FeaturedProject?
+  featured       FeaturedProject?
 }
 
 model FeaturedProject {
