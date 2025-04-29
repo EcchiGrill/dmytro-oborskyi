@@ -1,21 +1,34 @@
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
+export type Maybe<T> = T | null
+export type InputMaybe<T> = Maybe<T>
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>
+}
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>
+}
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never }
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never
+    }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
+  ID: { input: string; output: string }
+  String: { input: string; output: string }
+  Boolean: { input: boolean; output: boolean }
+  Int: { input: number; output: number }
+  Float: { input: number; output: number }
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
-  DateTime: { input: any; output: any; }
-};
+  DateTime: { input: any; output: any }
+}
 
 export type CreateProjectInput = {
   description: Scalars['String']['input']
@@ -32,43 +45,38 @@ export type CreateProjectInput = {
 }
 
 export type Mutation = {
-  __typename?: 'Mutation';
-  addFeaturedProject: Project;
-  createProject: Project;
-  removeFeaturedProject: Project;
-  removeProject: Project;
-  updateProject: Project;
-};
-
+  __typename?: 'Mutation'
+  addFeaturedProject: Project
+  createProject: Project
+  removeFeaturedProject: Project
+  removeProject: Project
+  updateProject: Project
+}
 
 export type MutationAddFeaturedProjectArgs = {
-  uid: Scalars['String']['input'];
-};
-
+  uid: Scalars['String']['input']
+}
 
 export type MutationCreateProjectArgs = {
-  createProjectInput: CreateProjectInput;
-};
-
+  createProjectInput: CreateProjectInput
+}
 
 export type MutationRemoveFeaturedProjectArgs = {
-  uid: Scalars['String']['input'];
-};
-
+  uid: Scalars['String']['input']
+}
 
 export type MutationRemoveProjectArgs = {
-  uid: Scalars['String']['input'];
-};
-
+  uid: Scalars['String']['input']
+}
 
 export type MutationUpdateProjectArgs = {
-  updateProjectInput: UpdateProjectInput;
-};
+  updateProjectInput: UpdateProjectInput
+}
 
 export type OrderByInput = {
-  createdAt?: InputMaybe<SortOrder>;
-  order?: InputMaybe<SortOrder>;
-};
+  createdAt?: InputMaybe<SortOrder>
+  order?: InputMaybe<SortOrder>
+}
 
 export type Project = {
   __typename?: 'Project'
@@ -89,30 +97,27 @@ export type Project = {
 }
 
 export type Query = {
-  __typename?: 'Query';
-  featuredProjects: Array<Project>;
-  getProject: Project;
-  projects: Array<Project>;
-};
-
+  __typename?: 'Query'
+  featuredProjects: Array<Project>
+  getProject: Project
+  projects: Array<Project>
+}
 
 export type QueryFeaturedProjectsArgs = {
-  orderBy?: InputMaybe<Array<OrderByInput>>;
-};
-
+  orderBy?: InputMaybe<Array<OrderByInput>>
+}
 
 export type QueryGetProjectArgs = {
-  uid: Scalars['String']['input'];
-};
-
+  uid: Scalars['String']['input']
+}
 
 export type QueryProjectsArgs = {
-  orderBy?: InputMaybe<Array<OrderByInput>>;
-};
+  orderBy?: InputMaybe<Array<OrderByInput>>
+}
 
 export enum SortOrder {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type UpdateProjectInput = {
@@ -203,11 +208,11 @@ export type CreateProjectMutation = {
 export const namedOperations = {
   Query: {
     Projects: 'Projects',
-    FeaturedProjects: 'FeaturedProjects'
+    FeaturedProjects: 'FeaturedProjects',
   },
   Mutation: {
-    CreateProject: 'CreateProject'
-  }
+    CreateProject: 'CreateProject',
+  },
 }
 
 export const ProjectsDocument = {
