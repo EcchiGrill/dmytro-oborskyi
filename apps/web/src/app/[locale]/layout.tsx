@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: process.env.NEXT_PUBLIC_URL,
     images: [
       {
-        url: process.env.NEXT_PUBLIC_URL + '/icon.svg',
+        url: process.env.NEXT_PUBLIC_URL + '/icon.png',
         width: 1200,
         height: 630,
         alt: 'Dmytro Oborskyi - CV',
@@ -40,8 +40,9 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: '/icon.svg',
-    apple: '/icon.svg',
+    shortcut: '/icon.png',
+    icon: '/icon.png',
+    apple: '/icon.png',
   },
 }
 

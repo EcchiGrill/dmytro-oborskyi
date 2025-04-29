@@ -1,5 +1,5 @@
 # Use Node.js base image
-FROM node:18-alpine
+FROM node:23-alpine
 
 # Adding OpenSSl 
 RUN apk add --no-cache openssl
