@@ -98,7 +98,7 @@ Or using npm:
 npm install
 ```
 
-### 3️⃣ Setup Frontend & Backend
+### :four: Setup Frontend & Backend
 
 The project is divided into frontend and backend parts, each with its own setup. Follow the respective setup guides:
 
@@ -115,3 +115,4 @@ This project is licensed under the MIT License.
 See the LICENSE file for more details.
 
 ## 🔥 Thank you for visiting my portfolio! If you have any questions or suggestions, feel free to reach out. Happy coding! 😊
+
