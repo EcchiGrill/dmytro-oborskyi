@@ -86,7 +86,7 @@ const Contact = () => {
         </form>
       </section>
       <div className="absolute bottom-0 flex place-items-center py-3 h-16 place-content-center w-full bg-gray-200 text-black/70">
-        © 2025 Dmytro Oborskyi. All rights reserved.
+        © 2026 Dmytro Oborskyi. All rights reserved.
       </div>
     </div>
   )
