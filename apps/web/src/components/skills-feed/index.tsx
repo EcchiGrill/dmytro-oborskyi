@@ -15,8 +15,8 @@ import { cn } from '@/lib/utils'
 import { ISkillsFeedProps } from './skills-feed.props'
 
 const skills = [
-  { name: 'Javascript', icon: Javascript },
-  { name: 'Typescript', icon: Typescript },
+  { name: 'JavaScript', icon: Javascript },
+  { name: 'TypeScript', icon: Typescript },
   { name: 'React', icon: React },
   { name: 'Next.js', icon: NextJS },
   { name: 'Vue.js', icon: Vue },
