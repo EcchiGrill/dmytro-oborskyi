@@ -1,4 +1,3 @@
-import { Project } from './entities/project.entity'
 import {
   Body,
   Controller,
@@ -9,15 +8,23 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common'
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger'
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger'
+import { PrismaService } from 'src/prisma/prisma.service'
+import { RESTAuthGuard } from 'src/auth/rest-auth.guard'
+import { Project } from './entities/project.entity'
 import { CreateProject } from './dtos/create-project.dto'
 import { UpdateProject } from './dtos/update-project.dto'
 import { ProjectsService } from '../projects.service'
 import { ProjectsQueryDto } from './dtos/query.dto'
-import { PrismaService } from 'src/prisma/prisma.service'
 
 @ApiTags('projects')
 @Controller('projects')
@@ -60,6 +67,8 @@ export class ProjectsController {
       'The project has been successfully added to featured collection.',
     type: Project,
   })
+  @UseGuards(RESTAuthGuard)
+  @ApiBearerAuth()
   @Post('featured/:uid')
   async addFeaturedProject(@Param('uid', ParseUUIDPipe) uid: string) {
     return this.projectsService.addFeaturedProject(uid)
@@ -69,6 +78,8 @@ export class ProjectsController {
     description:
       'The project has been succesfully removed from featured collection.',
   })
+  @UseGuards(RESTAuthGuard)
+  @ApiBearerAuth()
   @Delete('featured/:uid')
   removeFeaturedProject(@Param('uid', ParseUUIDPipe) uid: string) {
     return this.projectsService.removeFeaturedProject(uid)
@@ -87,6 +98,8 @@ export class ProjectsController {
     description: 'The project has been successfully created.',
     type: Project,
   })
+  @UseGuards(RESTAuthGuard)
+  @ApiBearerAuth()
   @Post()
   createProject(@Body() dto: CreateProject) {
     return this.projectsService.createProject(dto)
@@ -97,6 +110,8 @@ export class ProjectsController {
     type: Project,
   })
   @Put(':uid')
+  @UseGuards(RESTAuthGuard)
+  @ApiBearerAuth()
   updateProject(
     @Param('uid', ParseUUIDPipe) uid: string,
     @Body() dto: UpdateProject,
@@ -107,6 +122,8 @@ export class ProjectsController {
   @ApiOkResponse({
     description: 'The project has been successfully removed.',
   })
+  @UseGuards(RESTAuthGuard)
+  @ApiBearerAuth()
   @Delete(':uid')
   removeProject(@Param('uid', ParseUUIDPipe) uid: string) {
     return this.projectsService.removeProject(uid)

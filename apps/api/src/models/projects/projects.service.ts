@@ -76,7 +76,8 @@ export class ProjectsService {
     })
   }
 
-  createProject(data: CreateProjectInput) {
+  async createProject(data: CreateProjectInput) {
+    if (data.order) await this.validateOrder(data.order)
     return this.prisma.project.create({ data })
   }
 
@@ -88,6 +89,8 @@ export class ProjectsService {
         'This project does not exist',
         HttpStatus.NOT_FOUND,
       )
+
+    if (data.order) await this.validateOrder(data.order)
 
     return this.prisma.project.update({
       where: { uid },
@@ -105,5 +108,15 @@ export class ProjectsService {
       )
 
     return this.prisma.project.delete({ where: { uid } })
+  }
+
+  private async validateOrder(order: number) {
+    const featuredIds = await this.prisma.project.findMany()
+
+    if (featuredIds.find((o) => o.order === order))
+      throw new HttpException(
+        'This order is already taken',
+        HttpStatus.BAD_REQUEST,
+      )
   }
 }
