@@ -1,12 +1,3 @@
-/*
-  Warnings:
-
-  - Added the required column `description_uk` to the `Project` table without a default value. This is not possible if the table is not empty.
-
-*/
--- AlterTable
-ALTER TABLE "Project" ADD COLUMN     "description_uk" TEXT NOT NULL;
-
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,

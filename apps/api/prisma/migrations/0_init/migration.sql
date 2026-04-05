@@ -13,6 +13,7 @@ CREATE TABLE "Project" (
     "order" INTEGER,
     "img" TEXT NOT NULL,
     "tags" TEXT[],
+    "description_uk" TEXT NOT NULL,
 
     CONSTRAINT "Project_pkey" PRIMARY KEY ("uid")
 );
@@ -29,3 +30,4 @@ CREATE UNIQUE INDEX "Project_order_key" ON "Project"("order");
 
 -- AddForeignKey
 ALTER TABLE "FeaturedProject" ADD CONSTRAINT "FeaturedProject_uid_fkey" FOREIGN KEY ("uid") REFERENCES "Project"("uid") ON DELETE CASCADE ON UPDATE CASCADE;
+
